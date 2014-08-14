@@ -16,7 +16,9 @@ class DebuggingQuestion(RecordingQuestion):
             print("removed: ", response["removed"])
         if "values" in response:
             print("\nvalues: ", response["values"])
-        return True
+        if "traceback" in response:
+            print("\ntraceback: ", response["traceback"])
+        return response["traceback"] == None
         
     def execute(self, data={}):
         super().execute(data=data)
